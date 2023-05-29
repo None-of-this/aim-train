@@ -10,6 +10,8 @@ let timer = document.querySelector('.stopwatch')
 let countdown = document.createElement('h2');
 countdown.classList.add('countdown');
 
+
+
 let bestScore = 0;
 //* this is updating the board hit and miss, i guess they never miss
 
@@ -27,7 +29,7 @@ function start() {
   hitCount = 0;
   missClickCount = 0;
   updateBoard();
-
+  
   btn.appendChild(countdown);
   for(let i = 3; i >= 0 ; i--){
     setTimeout(() => {
@@ -42,18 +44,28 @@ function start() {
         seconds = 30;
         stopwatch();
         btn.addEventListener('click', clicking)
-
+        
         // gameActive();
       }
     }, (3 - i) * 1000);
   }
 }
 
+
 let x;
 let y;
-const { clientWidth, clientHeight } = svgBox;
+let { clientWidth, clientHeight } = svgBox;
+//* those are the dimention of the svgBox
 const { cx, cy } = aim;
+//* this is assigning cx and cy at the x and y coordinate of the aim
 let hitCount = 0
+
+window.addEventListener("resize", updateClientSize);
+
+function updateClientSize() {
+  clientWidth = svgBox.clientWidth;
+  clientHeight = svgBox.clientHeight;
+}
 
 aim.addEventListener("click", hit);
 
@@ -137,7 +149,7 @@ function result() {
   startBtn.classList.remove('hide');
   bestScore = hitCount > bestScore ? hitCount : bestScore;
   console.log(`you're accruacy is ${(hitCount / missClickCount) * 100}%`);
-  displayedBest.textContent = `Best ${bestScore}`
+  displayedBest.textContent = `You're best score is ${bestScore} !`
   // btn.appendChild()
 
   startBtn.addEventListener("click", start);

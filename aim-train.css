@@ -3,7 +3,7 @@
 @import "./back-waves.css";
 
 :root {
-    --background-color: rgb(223, 223, 223);
+    --background-color: rgb(231, 231, 231);
 }
 
 body {
@@ -114,7 +114,7 @@ circle {
 }
 
 .box {
-    background: white;
+    background: #ffffff;
     color: black;
     border: solid;
     border-width: 5px;
@@ -151,3 +151,4 @@ p {
 .result {
     width: 60vw;
 }
+
